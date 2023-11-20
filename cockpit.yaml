@@ -1,0 +1,21 @@
+---
+- name: Install cockpit on local machine
+  hosts: all
+  tasks:
+    - name: Ensure cockpit is installed
+      ansible.builtin.yum:
+        name: cockpit
+        state: present
+
+    - name: Ensure cockpit servoc:e is started and enabled
+      ansible.builtin.systemd:
+        name: cockpit
+        state: started
+        enabled: true
+
+    - name: Ensure cockpit network traffic is allowed
+      ansible.posix.firewalld:
+        service: cockpit
+        permanent: true
+        immediate: true
+        state: enabled
