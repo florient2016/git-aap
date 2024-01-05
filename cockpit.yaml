@@ -19,3 +19,6 @@
         permanent: true
         immediate: true
         state: enabled
+    - name: Debug module for test
+      ansible.builtin.debug:
+        msg: "WELCOME !!!!!!!!!!!!!!!!!!!!!!!!!"
